@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "semantic-layer-metrics-platform"
+version = "0.1.0"
+description = "Governed semantic layer / metrics platform: metrics defined once as code, a deterministic SQL compiler with join fan-out guards, governance (owners, tiers, certified vs draft, deprecation), TTL caching, and metric-to-source lineage."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Manas Mohanty" }]
+keywords = ["data-engineering", "semantic-layer", "metrics", "sql-compiler", "governance", "lineage"]
+dependencies = []
+
+[project.optional-dependencies]
+api = ["fastapi>=0.110", "uvicorn>=0.29", "pydantic>=2.6"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+semantic-layer = "semantic_layer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
